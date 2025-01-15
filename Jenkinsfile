@@ -23,7 +23,7 @@ pipeline {
         stage('Build React App') {
             steps {
                 dir('react-app') {
-                    nodejs(nodeJSInstallationName: "Node ${NODE_VERSION}") {
+                    nodejs(nodeJSInstallationName: "Node 20") {
                         sh 'npm install'
                         sh 'npm run build'
                     }
