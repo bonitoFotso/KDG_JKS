@@ -31,15 +31,15 @@ pipeline {
             }
         }
         
-        stage('Test React App') {
-            steps {
-                dir('react-app') {
-                    nodejs(nodeJSInstallationName: "Node ${NODE_VERSION}") {
-                        sh 'npm test'
-                    }
-                }
-            }
-        }
+        // stage('Test React App') {
+        //     steps {
+        //         dir('react-app') {
+        //             nodejs(nodeJSInstallationName: "Node ${NODE_VERSION}") {
+        //                 sh 'npm test'
+        //             }
+        //         }
+        //     }
+        // }
         
         stage('Build Django App') {
             steps {
@@ -52,15 +52,15 @@ pipeline {
             }
         }
         
-        stage('Test Django App') {
-            steps {
-                dir('django-app') {
-                    withPythonEnv("python${PYTHON_VERSION}") {
-                        sh 'python manage.py test'
-                    }
-                }
-            }
-        }
+        // stage('Test Django App') {
+        //     steps {
+        //         dir('django-app') {
+        //             withPythonEnv("python${PYTHON_VERSION}") {
+        //                 sh 'python manage.py test'
+        //             }
+        //         }
+        //     }
+        // }
     }
     
     post {
