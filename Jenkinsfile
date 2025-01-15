@@ -1,9 +1,9 @@
 pipeline {
     agent any
     
-    tools {
-        nodejs 'Node20'  // Nom de votre installation NodeJS dans Jenkins
-        python 'Python3' // Nom de votre installation Python dans Jenkins
+    environment {
+        PYTHON_VERSION = '3.9'
+        NODE_VERSION = '20'
     }
     
     stages {
@@ -23,8 +23,10 @@ pipeline {
         stage('Build React App') {
             steps {
                 dir('react-app') {
+                    nodejs(nodeJSInstallationName: "Node 20") {
                         sh 'npm install'
                         sh 'npm run build'
+                    }
                 }
             }
         }
@@ -42,9 +44,10 @@ pipeline {
         stage('Build Django App') {
             steps {
                 dir('django-app') {
+                    withPythonEnv("python${PYTHON_VERSION}") {
                         sh 'pip install -r requirements.txt'
                         sh 'python manage.py migrate'
-                    
+                    }
                 }
             }
         }
