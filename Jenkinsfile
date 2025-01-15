@@ -11,11 +11,11 @@ pipeline {
             steps {
                 // Cloner le dépôt React
                 dir('react-app') {
-                git branch: 'v1.2',   git 'https://github.com/bonitoFotso/DocGen.git'
+                    git branch: 'v1.2',   url: 'https://github.com/bonitoFotso/DocGen.git'
                 }
                 // Cloner le dépôt Django
                 dir('django-app') {
-                git branch: 'v1.2',   git 'https://github.com/bonitoFotso/KES_DocGen.git'
+                    git branch: 'v1.2',   url: 'https://github.com/bonitoFotso/KES_DocGen.git'
                 }
             }
         }
