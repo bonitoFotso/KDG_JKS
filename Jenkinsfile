@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         PYTHON_VERSION = '3.9'
-        NODE_VERSION = '14'
+        NODE_VERSION = '20'
     }
     
     stages {
